@@ -19,8 +19,9 @@ app.use(express.static("public"))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
+// Route all other requests to the index.html file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 //routes import
