@@ -110,7 +110,7 @@ function Header() {
               type="text"
               placeholder="Search.."
               rightIcon={AiOutlineSearch}
-              className="lg:flex w-[60%] lg:w-[120%] md:w-[100%] sm:w-[60%]"
+              className=" hidden lg:inline-block w-[40%] lg:w-[120%] md:w-[100%] sm:w-[60%]"
               value={search}
               onChange={handleSearchChange}
             />
@@ -123,7 +123,12 @@ function Header() {
                 <div className="relative">
                   {searchResults.map((result, index) => (
                     <li className="border p-4" onClick={() => navigate(`/getQuestion/${result._id}`)} key={index}>
-                      <SearchResult title={result.question} content={result.nameOfOwner} />
+                                              {!result.isAnonymous ? (
+                            <SearchResult question={result.question} asked={result.nameOfOwner} />
+                        ) : (
+                          <SearchResult question={result.question} asked='Anonymous' />
+                        )}
+                      
                     </li>
                   ))}
                 </div>
@@ -134,7 +139,7 @@ function Header() {
       )}
 
 
-      <Button className="w-12 h-10 lg:hidden" color="gray" pill>
+      <Button className="w-12 h-10 lg:hidden" color="gray" pill onClick={() => navigate("/showBlogs")}>
         <AiOutlineSearch />
       </Button>
       <div className="flex gap-2 md:order-2">
