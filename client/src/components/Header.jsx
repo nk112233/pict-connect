@@ -50,7 +50,9 @@ function Header() {
         navigate('/login');
       }
     } catch (error) {
-      console.log(error.message);
+      console.log('err',error);
+      navigate('/login');
+      dispatch(reset());
     }
   };
   useEffect(() => {
