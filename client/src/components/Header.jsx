@@ -41,7 +41,7 @@ function Header() {
       });
       const data = await res.json();
       if (!res.ok) {
-        console.log(data.message);
+        console.log("rftkn",data);
         navigate('/login');
         dispatch(reset());
       } else {
