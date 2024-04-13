@@ -8,6 +8,7 @@ import { toggleTheme } from '../app/theme/themeSlice';
 import { signoutSuccess } from '../app/user/userSlice';
 import { setSearchQuery } from '../app/Search/SearchSlice';
 import { SearchResult } from './SearchResult';
+import { reset } from '../app/user/userSlice';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,6 +42,8 @@ function Header() {
       const data = await res.json();
       if (!res.ok) {
         console.log(data.message);
+        navigate('/login');
+        dispatch(reset());
       } else {
         dispatch(signoutSuccess());
         console.log(data);
@@ -143,7 +146,7 @@ function Header() {
         <AiOutlineSearch />
       </Button>
       <div className="flex gap-2 md:order-2">
-        <Button className="w-12 h-10 hidden sm:inline" color="gray" pill onClick={() => dispatch(toggleTheme())}>
+        <Button className="w-12 h-10 inline" color="gray" pill onClick={() => dispatch(toggleTheme())}>
           {theme === 'light' ? <FaSun /> : <FaMoon />}
         </Button>
         {currentUser ? (
@@ -179,7 +182,7 @@ function Header() {
           <Link to="/contact">Contact Us</Link>
         </Navbar.Link>
         <Navbar.Link active={path === '/blog'} as={'div'}>
-          <Link to="/blog">Write / Ask Community</Link>
+          <Link to="/blog">Write Blog / Ask Community</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
