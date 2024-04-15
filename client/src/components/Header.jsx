@@ -41,7 +41,7 @@ function Header() {
       });
       const data = await res.json();
       if (!res.ok) {
-        console.log("rftkn",data);
+        console.log(data.message);
         navigate('/login');
         dispatch(reset());
       } else {
@@ -50,7 +50,7 @@ function Header() {
         navigate('/login');
       }
     } catch (error) {
-      console.log('err',error);
+      console.log(error.message);
       navigate('/login');
       dispatch(reset());
     }
