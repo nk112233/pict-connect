@@ -35,7 +35,7 @@ const Events = () => {
               <div class="relative p-6 space-y-6 leading-none rounded-lg dark:bg-[#282929] bg-white ring-1 ring-gray-900/5">
                 <div className="p-6">
                   <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
-                  <p className="text-gray-600 dark:text-gray-400 text-justify leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-400 text-center leading-relaxed">
                     {item.description}
                   </p>
                 </div>
